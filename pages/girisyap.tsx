@@ -11,5 +11,5 @@ export default function Girisyap() {
   }, [token]);
 
   if (token && token.length > 1) return (window.location.href = "/");
-  return <Login />;
+  return <Login setToken={setToken}/>;
 }

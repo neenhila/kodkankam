@@ -1,6 +1,6 @@
 import axios from "axios";
 import Navbar from "./Navbar";
-export default function Login({ setIsLogged }: any) {
+export default function Login({ setIsLogged, setToken }: any) {
   return (
     <>
       <Navbar loginPage={true} />
@@ -38,7 +38,10 @@ export default function Login({ setIsLogged }: any) {
               username: usernameInput.value as string,
               password: passwordInput.value as string
             }).then(res => {
-              if(res.status == 200) return window.location.href = "/"
+              if(res.status == 200){
+                setIsLogged(true);
+                setToken(res.data)
+              }
             })
           }}
         />
