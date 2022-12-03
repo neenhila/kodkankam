@@ -1,3 +1,4 @@
+import axios from "axios";
 import Navbar from "./Navbar";
 export default function Login({ setIsLogged }: any) {
   return (
@@ -33,6 +34,12 @@ export default function Login({ setIsLogged }: any) {
             if (!usernameInput || !passwordInput) return;
             if(usernameInput.value.length < 3) return alert("Kullanıcı adınız 3 karakterden kısa olamaz.");
             if(passwordInput.value.length < 8) return alert("Şifreniz 8 karakterden kısa olamaz.");
+            axios.post("/api/giris", {
+              username: usernameInput.value as string,
+              password: passwordInput.value as string
+            }).then(res => {
+              if(res.status == 200) return window.location.href = "/"
+            })
           }}
         />
       </div>
