@@ -50,8 +50,8 @@ export default function Login({ setToken }: any) {
               })
               .then((res) => {
                 if (res.status == 200) {
-                  setToken(res.data);
-                  window.location.href = "/?success_login"
+                  sessionStorage.setItem("token", res.data);
+                  window.location.href = `/?success_login=${res.data}`
                 } else {
                   console.log(res)
                 }
