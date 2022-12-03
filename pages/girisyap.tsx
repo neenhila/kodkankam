@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "../Components/Login";
 
-export default function girisyap() {
+export default function Girisyap() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
