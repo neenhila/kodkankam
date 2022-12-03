@@ -1,10 +1,13 @@
 import axios from "axios";
 import Navbar from "./Navbar";
-export default function Login({ setIsLogged, setToken }: any) {
+export default function Login({ setToken }: any) {
   return (
     <>
       <Navbar loginPage={true} />
-      <div className="w-screen h-screen bg-gray-600 absolute z-[-1] pt-16 px-5 flex justify-center items-center gap-5 flex-col" id="loginPageContainer">
+      <div
+        className="w-screen h-screen bg-gray-600 absolute z-[-1] pt-16 px-5 flex justify-center items-center gap-5 flex-col"
+        id="loginPageContainer"
+      >
         <h1 className="text-[46px] font-extrabold font-sans">Giriş Paneli</h1>
         <h4 className="text-center text-md mb-16">
           Kendine bir kodkankası bulabilmek için <br />
@@ -29,20 +32,27 @@ export default function Login({ setIsLogged, setToken }: any) {
           id="submit"
           className="bg-transparent border-2 border-indigo-400 py-2 px-12 rounded-lg transition-all duration-[250ms] hover:bg-indigo-400 hover:text-slate-200 hover:border-indigo-200 active:bg-transparent"
           onClick={() => {
-            let usernameInput = document.getElementById("username") as HTMLInputElement;
-            let passwordInput = document.getElementById("password") as HTMLInputElement;
+            let usernameInput = document.getElementById(
+              "username"
+            ) as HTMLInputElement;
+            let passwordInput = document.getElementById(
+              "password"
+            ) as HTMLInputElement;
             if (!usernameInput || !passwordInput) return;
-            if(usernameInput.value.length < 3) return alert("Kullanıcı adınız 3 karakterden kısa olamaz.");
-            if(passwordInput.value.length < 8) return alert("Şifreniz 8 karakterden kısa olamaz.");
-            axios.post("/api/user/giris", {
-              username: usernameInput.value as string,
-              password: passwordInput.value as string
-            }).then(res => {
-              if(res.status == 200){
-                setIsLogged(true);
-                setToken(res.data)
-              }
-            })
+            if (usernameInput.value.length < 3)
+              return alert("Kullanıcı adınız 3 karakterden kısa olamaz.");
+            if (passwordInput.value.length < 8)
+              return alert("Şifreniz 8 karakterden kısa olamaz.");
+            axios
+              .post("/api/user/giris", {
+                username: usernameInput.value as string,
+                password: passwordInput.value as string,
+              })
+              .then((res) => {
+                if (res.status == 200) {
+                  setToken(res.data);
+                }
+              });
           }}
         />
       </div>
