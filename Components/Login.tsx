@@ -51,6 +51,8 @@ export default function Login({ setToken }: any) {
               .then((res) => {
                 if (res.status == 200) {
                   setToken(res.data);
+                } else {
+                  console.log(res)
                 }
               });
           }}
