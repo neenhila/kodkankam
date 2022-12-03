@@ -51,6 +51,7 @@ export default function Login({ setToken }: any) {
               .then((res) => {
                 if (res.status == 200) {
                   setToken(res.data);
+                  window.location.href = "/?success_login"
                 } else {
                   console.log(res)
                 }
