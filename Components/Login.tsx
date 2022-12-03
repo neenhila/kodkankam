@@ -34,7 +34,7 @@ export default function Login({ setIsLogged }: any) {
             if (!usernameInput || !passwordInput) return;
             if(usernameInput.value.length < 3) return alert("Kullanıcı adınız 3 karakterden kısa olamaz.");
             if(passwordInput.value.length < 8) return alert("Şifreniz 8 karakterden kısa olamaz.");
-            axios.post("/api/giris", {
+            axios.post("/api/user/giris", {
               username: usernameInput.value as string,
               password: passwordInput.value as string
             }).then(res => {
